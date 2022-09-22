@@ -33,7 +33,7 @@ LABEL maintainer="Robert Scheck <https://github.com/pdftk-java/pdftk-java-contai
       org.label-schema.usage="https://gitlab.com/pdftk-java/pdftk/-/blob/master/README.md" \
       org.label-schema.vcs-url="https://gitlab.com/pdftk-java/pdftk"
 
-ARG VERSION=3.3.2
+ARG VERSION=3.3.3
 ARG GIT
 ARG COMMIT
 ARG BOUNCYCASTLE=r1rv71
@@ -47,9 +47,9 @@ RUN set -x && \
   wget https://github.com/bcgit/bc-java/archive/${BOUNCYCASTLE}.tar.gz -O bc-java-${BOUNCYCASTLE}.tar.gz && \
   tar xfz bc-java-${BOUNCYCASTLE}.tar.gz && \
   cd bc-java-${BOUNCYCASTLE} && \
-  sed -e '/javadoc-/d' -i ant/jdk15+.xml && \
-  ant -f ant/jdk15+.xml -Dbc.javac.source=1.8 -Dbc.javac.target=1.8 clean build-provider build && \
-  install -D -p -m 0644 build/artifacts/jdk1.5/jars/bcprov-ext-jdk15to18-*.jar /usr/share/java/bcprov.jar && \
+  sed -e '/javadoc-/d' -i ant/jdk18+.xml && \
+  ant -f ant/jdk18+.xml -Dbc.javac.source=1.8 -Dbc.javac.target=1.8 clean build-provider build && \
+  install -D -p -m 0644 build/artifacts/jdk1.8/jars/bcprov-ext-jdk18on-*.jar /usr/share/java/bcprov.jar && \
   cd .. && \
   rm -rf bc-java-${BOUNCYCASTLE}* && \
   jsf=/usr/lib/jvm/java-1.8-openjdk/jre/lib/security/java.security OIFS=$IFS IFS=$'\n' && \
