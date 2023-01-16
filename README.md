@@ -1,5 +1,9 @@
 # Container image for pdftk-java
 
+[![Build OCI image](https://github.com/pdftk-java/pdftk-java-container/actions/workflows/image.yml/badge.svg)](https://github.com/pdftk-java/pdftk-java-container/actions/workflows/image.yml)
+[![Docker pulls](https://img.shields.io/docker/pulls/pdftk/pdftk.svg)](https://hub.docker.com/r/pdftk/pdftk)
+[![OCI image size](https://img.shields.io/docker/image-size/pdftk/pdftk/latest.svg)](https://hub.docker.com/r/pdftk/pdftk/tags)
+
 ## About
 
 Source files and build instructions for an [OCI](https://opencontainers.org/) image (compatible with e.g. Docker or Podman) for [pdftk-java](https://gitlab.com/pdftk-java/pdftk). If PDF is electronic paper, then pdftk-java is an electronic staple-remover, hole-punch, binder, secret-decoder-ring, and X-Ray-glasses. PDFtk is a simple tool for doing everyday things with PDF documents: Merge PDF documents, split PDF pages into a new document, decrypt input as necessary (password required), encrypt output as desired, burst a PDF document into single pages, report on PDF metrics, including metadata and bookmarks, uncompress and re-compress page streams, and repair corrupted PDF (where possible).
