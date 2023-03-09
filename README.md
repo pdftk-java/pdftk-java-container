@@ -3,6 +3,7 @@
 [![Build OCI image](https://github.com/pdftk-java/pdftk-java-container/actions/workflows/image.yml/badge.svg)](https://github.com/pdftk-java/pdftk-java-container/actions/workflows/image.yml)
 [![Docker pulls](https://img.shields.io/docker/pulls/pdftk/pdftk.svg)](https://hub.docker.com/r/pdftk/pdftk)
 [![OCI image size](https://img.shields.io/docker/image-size/pdftk/pdftk/latest.svg)](https://hub.docker.com/r/pdftk/pdftk/tags)
+[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/pdftk-java/pdftk-java-container)](https://www.codefactor.io/repository/github/pdftk-java/pdftk-java-container)
 [![Latest version](https://img.shields.io/docker/v/pdftk/pdftk.svg?sort=semver)](https://hub.docker.com/r/pdftk/pdftk/tags)
 
 ## About
