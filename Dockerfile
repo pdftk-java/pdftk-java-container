@@ -75,9 +75,8 @@ RUN set -x && \
     tar xfz "pdftk-v${VERSION}.tar.gz" && \
     cd "pdftk-v${VERSION}"; \
   else \
-    git clone "${GIT:-https://gitlab.com/pdftk-java/pdftk.git}" && \
-    cd pdftk && \
-    git checkout "${COMMIT:-master}"; \
+    git clone -b "${COMMIT:-master}" --single-branch "${GIT:-https://gitlab.com/pdftk-java/pdftk.git}" && \
+    cd pdftk; \
   fi && \
   mkdir lib/ && \
   cp -pf /usr/share/java/bcprov.jar /usr/share/java/commons-lang3.jar lib/ && \
