@@ -43,10 +43,10 @@ RUN set -x && \
   export BUILDREQ="git apache-ant maven" && \
   apk --no-cache upgrade && \
   apk --no-cache add ${BUILDREQ} openjdk8-jre-base && \
-  cd /tmp && \
+  cd /tmp/ && \
   wget "https://github.com/bcgit/bc-java/archive/${BOUNCYCASTLE}.tar.gz" -O "bc-java-${BOUNCYCASTLE}.tar.gz" && \
   tar xfz "bc-java-${BOUNCYCASTLE}.tar.gz" && \
-  cd "bc-java-${BOUNCYCASTLE}" && \
+  cd "bc-java-${BOUNCYCASTLE}/" && \
   sed -e '/javadoc-/d' -i ant/jdk18+.xml && \
   ant -f ant/jdk18+.xml -Dbc.javac.source=1.8 -Dbc.javac.target=1.8 clean build-provider build && \
   install -D -p -m 0644 build/artifacts/jdk1.8/jars/bcprov-ext-jdk18on-*.jar /usr/share/java/bcprov.jar && \
@@ -65,7 +65,7 @@ RUN set -x && \
   mv -f "${jsf}.bc" "${jsf}" && \
   wget "https://archive.apache.org/dist/commons/lang/source/commons-lang3-${COMMONSLANG3}-src.tar.gz" && \
   tar xfz "commons-lang3-${COMMONSLANG3}-src.tar.gz" && \
-  cd "commons-lang3-${COMMONSLANG3}-src"* && \
+  cd "commons-lang3-${COMMONSLANG3}-src"*"/" && \
   mvn package -DskipTests -Dmaven.javadoc.skip=true -Dmaven.repo.local="/tmp/commons-lang3-${COMMONSLANG3}-m2" && \
   install -D -p -m 0644 "target/commons-lang3-${COMMONSLANG3}.jar" /usr/share/java/commons-lang3.jar && \
   cd .. && \
@@ -73,10 +73,10 @@ RUN set -x && \
   if [ -z "${GIT}" -a -z "${COMMIT}" ]; then \
     wget "https://gitlab.com/pdftk-java/pdftk/-/archive/v${VERSION}/pdftk-v${VERSION}.tar.gz" && \
     tar xfz "pdftk-v${VERSION}.tar.gz" && \
-    cd "pdftk-v${VERSION}"; \
+    cd "pdftk-v${VERSION}/"; \
   else \
     git clone -b "${COMMIT:-master}" --single-branch "${GIT:-https://gitlab.com/pdftk-java/pdftk.git}" && \
-    cd pdftk; \
+    cd pdftk/; \
   fi && \
   mkdir lib/ && \
   cp -pf /usr/share/java/bcprov.jar /usr/share/java/commons-lang3.jar lib/ && \
@@ -86,13 +86,13 @@ RUN set -x && \
   chmod 0755 /usr/bin/pdftk && \
   set -euo pipefail && \
   pdftk test/files/duck.pdf test/files/duck.pdf output two-ducks.pdf && \
-  pdftk two-ducks.pdf dump_data | grep -q "NumberOfPages: 2" && \
+  pdftk two-ducks.pdf dump_data | grep -q 'NumberOfPages: 2' && \
   pdftk test/files/duck.pdf rotate 1east output rotated-duck.pdf && \
-  pdftk rotated-duck.pdf dump_data | grep -q "PageMediaRotation: 90" && \
+  pdftk rotated-duck.pdf dump_data | grep -q 'PageMediaRotation: 90' && \
   cd .. && \
   rm -rf pdftk* && \
   apk --no-cache del ${BUILDREQ} && \
-  mkdir /work && \
+  mkdir /work/ && \
   pdftk --version
 
 VOLUME ["/work"]
