@@ -36,7 +36,7 @@ LABEL maintainer="Robert Scheck <https://github.com/pdftk-java/pdftk-java-contai
 ARG VERSION=3.3.3
 ARG GIT
 ARG COMMIT
-ARG BOUNCYCASTLE=r1rv73
+ARG BOUNCYCASTLE=r1rv74
 ARG COMMONSLANG3=3.12.0
 
 RUN set -x && \
