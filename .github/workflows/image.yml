@@ -150,3 +150,26 @@ jobs:
             org.label-schema.version=${{ steps.prep.outputs.version }}
             org.label-schema.build-date=${{ steps.prep.outputs.created }}
             org.label-schema.vcs-ref=${{ github.sha }}
+          provenance: false
+    outputs:
+      version: ${{ steps.prep.outputs.version }}
+
+  check:
+    needs: main
+    runs-on: ubuntu-latest
+    container: pdftk/pdftk:${{ needs.main.outputs.version }}
+    steps:
+      - name: Run 'pdftk --help'
+        run: pdftk --help
+      - name: Download test/files/duck.pdf from upstream
+        run: wget https://gitlab.com/pdftk-java/pdftk/-/raw/master/test/files/duck.pdf -O /work/duck.pdf
+      - name: Assemble (catenate) two PDF files into one
+        run: |
+          set -euo pipefail
+          pdftk /work/duck.pdf /work/duck.pdf output /work/two-ducks.pdf
+          pdftk /work/two-ducks.pdf dump_data | grep -q 'NumberOfPages: 2'
+      - name: Rotate a PDF file by 90 degrees clockwise
+        run: |
+          set -euo pipefail
+          pdftk /work/duck.pdf rotate 1east output /work/rotated-duck.pdf
+          pdftk /work/rotated-duck.pdf dump_data | grep -q 'PageMediaRotation: 90'
