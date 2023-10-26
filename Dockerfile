@@ -40,9 +40,11 @@ ARG BOUNCYCASTLE=r1rv76
 ARG COMMONSLANG3=3.12.0
 
 RUN set -x && \
-  export BUILDREQ="git apache-ant maven" && \
+  export BUILDREQ="git apache-ant maven openjdk8" && \
   apk --no-cache upgrade && \
   apk --no-cache add ${BUILDREQ} openjdk8-jre-base && \
+  ln -sfn java-1.8-openjdk /usr/lib/jvm/default-jvm && \
+  ln -sfn java-1.8-openjdk /usr/lib/jvm/forced-jvm && \
   cd /tmp/ && \
   wget "https://github.com/bcgit/bc-java/archive/${BOUNCYCASTLE}.tar.gz" -O "bc-java-${BOUNCYCASTLE}.tar.gz" && \
   tar xfz "bc-java-${BOUNCYCASTLE}.tar.gz" && \
