@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021-2023  Robert Scheck <robert@fedoraproject.org>
+# Copyright (C) 2021-2024  Robert Scheck <robert@fedoraproject.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ LABEL maintainer="Robert Scheck <https://github.com/pdftk-java/pdftk-java-contai
 ARG VERSION=3.3.3
 ARG GIT
 ARG COMMIT
-ARG BOUNCYCASTLE=r1rv77
+ARG BOUNCYCASTLE=r1rv78v1
 ARG COMMONSLANG3=3.12.0
 
 RUN set -x && \
