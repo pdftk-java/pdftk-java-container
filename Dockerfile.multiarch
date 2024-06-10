@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021-2023  Robert Scheck <robert@fedoraproject.org>
+# Copyright (C) 2021-2024  Robert Scheck <robert@fedoraproject.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ LABEL maintainer="Robert Scheck <https://github.com/pdftk-java/pdftk-java-contai
       org.opencontainers.image.url="https://gitlab.com/pdftk-java/pdftk" \
       org.opencontainers.image.documentation="https://gitlab.com/pdftk-java/pdftk/-/blob/master/README.md" \
       org.opencontainers.image.source="https://gitlab.com/pdftk-java/pdftk" \
-      org.opencontainers.image.licenses="GPL-2.0+" \
+      org.opencontainers.image.licenses="GPL-2.0-or-later" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.name="pdftk-java" \
       org.label-schema.description="GCJ-free toolkit for manipulating PDF documents" \
