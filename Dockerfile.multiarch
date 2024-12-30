@@ -36,10 +36,14 @@ LABEL maintainer="Robert Scheck <https://github.com/pdftk-java/pdftk-java-contai
 COPY bcprov.jar commons-lang3.jar pdftk.jar /usr/share/java/
 
 RUN set -x && \
+  case "$(uname -m)" in \
+    "riscv64")  export JRE="openjdk21-jre-headless" SECURITY="/usr/lib/jvm/java-21-openjdk/conf/security/java.security"     ;; \
+    *)          export JRE="openjdk8-jre-base"      SECURITY="/usr/lib/jvm/java-1.8-openjdk/jre/lib/security/java.security" ;; \
+  esac && \
   apk --no-cache upgrade && \
-  apk --no-cache add openjdk8-jre-base && \
+  apk --no-cache add "${JRE}" && \
   ls -l /usr/share/java/ && \
-  jsf=/usr/lib/jvm/java-1.8-openjdk/jre/lib/security/java.security OIFS="${IFS}" IFS=$'\n' && \
+  jsf="${SECURITY}" OIFS="${IFS}" IFS=$'\n' && \
   cp -pf "${jsf}" "${jsf}.bc" && \
   sed -e 's/^security\.provider\.1=.*/security.provider.next/' -e '/^security\.provider\.[0-9].*/d' -i "${jsf}.bc" && \
   for sp in $(grep '^security\.provider\.' "${jsf}"); do \
