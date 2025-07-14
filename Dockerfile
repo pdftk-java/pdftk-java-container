@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021-2022  Robert Scheck <robert@fedoraproject.org>
+# Copyright (C) 2021-2025  Robert Scheck <robert@fedoraproject.org>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ ARG VERSION=3.3.3
 ARG GIT
 ARG COMMIT
 ARG BOUNCYCASTLE=r1rv71
-ARG COMMONSLANG3=3.12.0
+ARG COMMONSLANG3=3.18.0
 
 RUN set -x && \
   export BUILDREQ="git apache-ant maven openjdk8" && \
