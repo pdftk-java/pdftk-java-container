@@ -37,7 +37,7 @@ ARG VERSION=3.3.3
 ARG GIT
 ARG COMMIT
 ARG BOUNCYCASTLE=r1rv80
-ARG COMMONSLANG3=3.12.0
+ARG COMMONSLANG3=3.18.0
 
 RUN set -x && \
   export BUILDREQ="git apache-ant maven openjdk8" && \
