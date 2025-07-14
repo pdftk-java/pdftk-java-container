@@ -36,7 +36,7 @@ LABEL maintainer="Robert Scheck <https://github.com/pdftk-java/pdftk-java-contai
 ARG VERSION=3.3.3
 ARG GIT
 ARG COMMIT
-ARG BOUNCYCASTLE=r1rv71
+ARG BOUNCYCASTLE=r1rv80
 ARG COMMONSLANG3=3.18.0
 
 RUN set -x && \
@@ -83,6 +83,7 @@ RUN set -x && \
   fi && \
   mkdir lib/ && \
   cp -pf /usr/share/java/bcprov.jar /usr/share/java/commons-lang3.jar lib/ && \
+  sed -e 's/\.getObject(/.getBaseObject(/' -i java/com/gitlab/pdftk_java/com/lowagie/text/pdf/PdfPKCS7.java && \
   ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar && \
   install -D -p -m 0644 build/jar/pdftk.jar /usr/share/java/pdftk.jar && \
   echo -e '#!/bin/sh\nexec /usr/bin/java -classpath /usr/share/java/bcprov.jar:/usr/share/java/commons-lang3.jar:/usr/share/java/pdftk.jar com.gitlab.pdftk_java.pdftk "${@}"' > /usr/bin/pdftk && \
