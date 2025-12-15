@@ -87,7 +87,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v6
       - name: Retrieve artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: pdftk-java#${{ github.run_id }}
       - name: Set up QEMU
