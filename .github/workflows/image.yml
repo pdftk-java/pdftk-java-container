@@ -68,7 +68,7 @@ jobs:
       - name: Extract artifacts
         run: tar xvf /tmp/image.tar usr/share/java
       - name: Upload artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: pdftk-java#${{ github.run_id }}
           path: usr/share/java/*.jar
